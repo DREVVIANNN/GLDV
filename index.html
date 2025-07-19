@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google" content="notranslate">
+  <title>GLDV - GFX Arts Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<link rel="shortcut icon" href="assets/img/gldv.png" type="image/x-icon" />
+<style>
+.fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body class="bg-white text-black font-sans">
+    
+    <div id="bg-word-layer" translate="no" aria-hidden="true" lang="zxx" class="notranslate absolute inset-0 z-0 overflow-hidden pointer-events-none"></div>
+    
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 mb-10">
+
+    <header class="sticky top-0 z-50 bg-white flex items-center justify-between p-3 max-w-7xl mx-auto">
+      <div class="text-xl font-bold">GLDV</div>
+      
+    
+      <div class="flex gap-4 items-center relative">
+
+               <a href="mailto:cs@gldv.my.id" class="text-sm px-3 py-[6px] border rounded-md focus:outline-none">
+                <i class="ri-customer-service-2-fill text-gray-800"></i>
+               </a>
+
+      </div>
+    </header>
+
+    <section id="home" class="scroll-mt-20 max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-center">
+      <div class="animate__animated animate__fadeInLeft">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-red-800">GFX <span class="underline decoration-red-800">Library</span></h1>
+        <p class="text-lg text-gray-800 mb-6">GLDV is a creative platform focused on producing high-quality graphics, original character designs, and visual content that blends artistry with modern digital aesthetics.</p>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="https://forms.gle/k6vYXUtsydpCTguT6" class="px-6 py-3 bg-gray-200 text-center text-gray-600 text-sm font-semibold rounded-lg shadow-md hover:bg-gray-300 transition duration-300">
+            Ajukan Photo <i class="ri-upload-2-fill text-green-600"></i>
+            </a>
+
+            <a id="loginBtn" class="hidden px-6 py-3 bg-indigo-600 text-center text-gray-300 text-sm font-semibold rounded-lg shadow-md hover:bg-indigo-500 transition duration-300">
+          <i class="ri-google-fill text-gray-300"></i> Login to GLDV
+        </a>
+    
+         <!-- User Profile Display -->
+        <div id="userProfile" class="hidden flex items-center gap-4">
+          <img id="userPhoto" class="w-12 h-12 rounded-full border" src="" alt="User Photo" />
+          <div>
+            <div class="flex items-center gap-2">
+            <span id="userName" class="text-sm font-semibold text-gray-800"></span>
+            <span id="verifiedBadgeMobile" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-red-800"></i>
+                  </span>
+            </div>
+            <p id="userEmail" class="text-xs text-gray-600"></p>
+          </div>
+        </div>
+        
+        </div>
+
+
+  
+        <div class="grid grid-cols-2 gap-6 mt-10">
+          <div>
+            <h3 class="text-2xl font-bold">V1.0</h3>
+            <p class="text-sm text-gray-400">Web Version</p>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold">~19/7/2025</h3>
+            <p class="text-sm text-gray-400">Latest Update</p>
+          </div>
+          <div class="col-span-2 flex items-center mt-4">
+            <div class="text-yellow-500 text-lg">★★★★<span class="text-yellow-500">★</span></div>
+            <span class="text-sm ml-2 text-gray-800">5 Average user rating</span>
+          </div>
+        </div>
+      </div>
+  
+      <div class="animate-fade-in">
+        <img src="assets/img/gldv.png" alt="GLDV Logo" class="bg-hero hidden md:inline-block w-full max-w-md mx-auto">
+      </div>
+    </section> 
+
+  <div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold">Latest Upload</h2>
+  <div class="max-w-7xl mb-5 mt-5 mx-auto">
+    <input type="text" id="searchInput" placeholder="Search ID..."
+           class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-md shadow focus:outline-none focus:ring focus:border-blue-500"
+           onkeydown="searchLeaks(event)">
+  </div>
+  
+<div class="bg-white rounded-xl shadow-md p-4 flex items-start space-x-4 border border-gray-200 mb-6" data-aos="fade-up">
+  <img src="assets/img/gldvindonesia.png" class="w-12 h-12 rounded-full" alt="Profile" />
+  <div class="flex-1">
+    <h2 class="font-semibold text-gray-800 text-sm flex items-center">
+      GLDV Indonesia
+      <i class="ri-checkbox-circle-fill text-red-800 text-[14px] ml-1"></i>
+    </h2>
+    <p class="text-green-600 text-[10px] flex items-center">
+      Akun Terverifikasi <i class="ri-check-fill text-green-500 ml-1 text-[12px]"></i>
+    </p>
+          <p class="mt-1 text-sm">Selamat Datang di GLDV (Graphics Library De Visual), tempel id di pencarian yang dapatkan di komentar video tiktok @drevviann, lalu tekan enter!, pencet foto untuk melihat detail.</p>
+
+    <!-- Reaction Buttons -->
+    <div class="mt-3 flex space-x-3 text-[11px]">
+      <button onclick="react('love')" class="text-gray-500 border px-1 py-1 hover:text-red-500 rounded">❤️ <span id="loveCount">0</span></button>
+      <button onclick="react('like')" class="text-gray-500 px-1 py-1 rounded border hover:text-blue-500">👍 <span id="likeCount">0</span></button>
+      <button onclick="react('wow')" class="text-gray-500 hover:text-yellow-500 rounded px-1 py-1 border">🤩 <span id="wowCount">0</span></button>
+    </div>
+  </div>
+</div>
+
+    <!-- GFX Gallery -->
+    
+    <section id="gfxlibrary" class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/castorice.png" alt="Castorice" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/castorice.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: CAS9T0R
+  </p>
+</div>
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/shorekeeper.png" alt="Shorekeeper" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/shorekeeper.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: SH169HNJ
+  </p>
+</div>
+
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">   
+  <img src="assets/img/gtr34.png" alt="GTR R34" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/gtr34.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: GT3DN134H
+  </p>
+</div>
+
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/beth.png" alt="Beth" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/beth.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: BTH1MG2911
+  </p>
+</div>
+
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/arimakana.png" alt="Arima Kana" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/arimakana.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: AR268BSJ
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/osaragi.png" alt="Osaragi" class="w-full rounded-xl" onclick="openModal(this.src)" />  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/osaragi.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: OSG178F6N
+  </p>
+</div>
+
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/tenka.png" alt="Tenka" class="w-full rounded-xl" onclick="openModal(this.src)" />  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/tenka.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: TNK2D57F1
+  </p>
+</div>
+
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/filiancc.png" alt="Filian CC" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/filiancc.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: FL3FRCC
+  </p>
+</div>
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/filiancc2.png" alt="Filian CC 2" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/filiancc2.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: F2LCCYN
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/lupa.png" alt="Lupa" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/lupa.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: LP4TD678
+  </p>
+</div>
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/phrolova.png" alt="Phrolova" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/phrolova.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: PRL19GBN
+  </p>
+</div>
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/shorekeeper2.png" alt="Shorekeeper 2" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/shorekeeper2.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: S2KT871
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/spritegura.png" alt="Sprite X Gura" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/spritegura.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: GRS19SP0
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/cartethiya.png" alt="Cartethiya" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/cartethiya.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: CRT2HY70
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/hikarihakari.png" alt="Blue Archive" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/hikarihakari.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: BA5HKR1P
+  </p>
+</div>
+      
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/jnt.png" alt="Kurir J&T" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/jnt.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: JNT1GVB0
+  </p>
+</div>
+      
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/brant.png" alt="Brant" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/brant.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: BNTOCP281
+  </p>
+</div>
+
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/shorekeeper3.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/shorekeeper3.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: SK169HNJ
+  </p>
+</div>
+
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/shorekeeper4.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/shorekeeper4.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: SF169HNJ
+  </p>
+</div>
+
+<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/waguri.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/waguri.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+    <p class="text-[10px] text-gray-400">
+      ID: XG14P8N
+  </p>
+</div>
+    </div>
+    </section>
+    
+    <!-- Modal Fullscreen Image -->
+<div id="imageModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center" onclick="closeModal()">
+  <div class="relative max-w-5xl w-full mx-auto px-4">
+    <img id="modalImage" src="" class="w-full max-h-[90vh] object-contain mx-auto rounded-lg shadow-lg pointer-events-none" />
+  </div>
+</div>
+  </main>
+  
+  <script>
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+
+  function openModal(src) {
+    modalImg.src = src;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    modalImg.src = '';
+  }
+</script>
+  
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    once: false, // Repeat every time it scrolls into view
+    duration: 800,
+    easing: 'ease-in-out',
+  });
+</script>
+
+<script>
+  function searchLeaks(event) {
+    if (event.key === "Enter") {
+      const keyword = event.target.value.toLowerCase().trim();
+      const titles = document.querySelectorAll("#gfxlibrary p");
+
+      let found = false;
+      titles.forEach((title) => {
+        if (title.textContent.toLowerCase().includes(keyword)) {
+          title.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          title.classList.add("ring-2", "ring-blue-500", "rounded-md", "p-1"); // highlight briefly
+          setTimeout(() => title.classList.remove("ring-2", "ring-blue-500", "rounded-md", "p-1"), 2000);
+          found = true;
+        }
+      });
+
+      if (!found) {
+        alert("No leaks found matching: " + keyword);
+      }
+    }
+  }
+</script>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getDatabase, ref, onValue, increment, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyDpZuNDc7U8tz_onDH8SR3Uot6BZ3G63C4",
+  authDomain: "login-to-gldv.firebaseapp.com",
+  projectId: "login-to-gldv",
+  storageBucket: "login-to-gldv.firebasestorage.app",
+  messagingSenderId: "1081213427497",
+  appId: "1:1081213427497:web:313c01cbe841a93370e138"
+};
+
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+  const db = getDatabase(app);
+  const reactionRef = ref(db, 'reactions/gldv');
+
+  // Load current reaction counts
+  onValue(reactionRef, (snapshot) => {
+    const data = snapshot.val() || {};
+    document.getElementById("loveCount").textContent = data.love || 0;
+    document.getElementById("likeCount").textContent = data.like || 0;
+    document.getElementById("wowCount").textContent = data.wow || 0;
+  });
+
+  // Add reaction
+  window.react = function (type) {
+    const updates = {};
+    updates[`reactions/gldv/${type}`] = increment(1);
+    update(ref(db), updates);
+  }
+
+  // DOM elements
+  const loginBtn = document.getElementById('loginBtn');
+  const loginBtnMobile = document.getElementById('loginBtnMobile');
+  const userDisplayName = document.getElementById('userDisplayName');
+  const userDisplayNameMobile = document.getElementById('userDisplayNameMobile');
+  const verifiedBadge = document.getElementById('verifiedBadge');
+  const verifiedBadgeMobile = document.getElementById('verifiedBadgeMobile');
+
+  // Login
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        displayUser(user);
+      })
+      .catch((error) => {
+        console.error("Login Failed:", error);
+        alert("Login failed. Please try again.");
+      });
+  };
+
+function displayUser(user) {
+  const verifiedEmails = [
+    "gldvindonesia@gmail.com",
+    "fazrelmsyamil@gmail.com"
+  ];
+
+  const isDeveloper = verifiedEmails.includes(user.email);
+
+  if (userDisplayName) {
+    userDisplayName.textContent = `Hi, ${user.displayName}`;
+    userDisplayName.classList.remove("hidden");
+  }
+
+  if (userDisplayNameMobile) {
+    userDisplayNameMobile.textContent = `Hi, ${user.displayName}`;
+    userDisplayNameMobile.classList.remove("hidden");
+  }
+
+  if (isDeveloper) {
+    if (verifiedBadge) verifiedBadge.classList.remove("hidden");
+    if (verifiedBadgeMobile) verifiedBadgeMobile.classList.remove("hidden");
+  }
+
+  if (loginBtn) loginBtn.style.display = "none";
+  if (loginBtnMobile) loginBtnMobile.style.display = "none";
+
+  // Show Profile UI
+  const userProfile = document.getElementById('userProfile');
+  const userPhoto = document.getElementById('userPhoto');
+  const userName = document.getElementById('userName');
+  const userEmail = document.getElementById('userEmail');
+
+  if (userProfile && userPhoto && userName && userEmail) {
+    userPhoto.src = user.photoURL;
+    userName.textContent = user.displayName;
+    userEmail.textContent = censorEmail(user.email);
+    userProfile.classList.remove("hidden");
+  }
+}
+
+function censorEmail(email) {
+  const [name, domain] = email.split("@");
+  const visiblePart = name.slice(0, 1);
+  const censoredPart = "*".repeat(Math.max(name.length - 4, 2));
+  return `${visiblePart}${censoredPart}@${domain}`;
+}
+
+  // Event listeners
+  if (loginBtn) loginBtn.addEventListener('click', signInWithGoogle);
+  if (loginBtnMobile) loginBtnMobile.addEventListener('click', signInWithGoogle);
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    displayUser(user);
+  } else {
+    // user not logged in — show the login button
+    if (loginBtn) loginBtn.classList.remove("hidden");
+    if (loginBtnMobile) loginBtnMobile.classList.remove("hidden");
+  }
+});
+</script>
+
+      <script>
+          const isMobile = window.innerWidth < 40; // Tailwind's "sm" breakpoint
+  const wordCount = isMobile ? 10 : 20; // fewer on mobile
+  const words = ["は", "が", "に", "で", "も"];
+
+  const bgLayer = document.getElementById("bg-word-layer");
+
+  for (let i = 0; i < wordCount; i++) {
+    const span = document.createElement("span");
+    span.innerText = words[Math.floor(Math.random() * words.length)];
+    span.className = "absolute text-black/10 font-extrabold whitespace-nowrap select-none";
+    span.style.fontSize = `${Math.floor(Math.random() * 30) + 16}px`;
+    span.style.top = `${Math.random() * 100}vh`;
+    span.style.left = `${Math.random() * 100}vw`;
+    span.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+    span.style.animation = `floatWord 8s ease-in-out infinite alternate ${Math.random() * 3}s`;
+    bgLayer.appendChild(span);
+  }
+      </script>
+
+</body>
+</html>

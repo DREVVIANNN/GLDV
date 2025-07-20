@@ -109,8 +109,8 @@
             <p class="text-sm text-gray-400">Latest Update</p>
           </div>
           <div class="col-span-2 flex items-center mt-4">
-            <div class="text-yellow-500 text-lg">★★★★<span class="text-yellow-500">★</span></div>
-            <span class="text-sm ml-2 text-gray-800">5 Average user rating</span>
+            <div class="text-red-500 text-lg"></div>
+            <span class="text-sm text-gray-500">© 2025 GLDV. All rights reserved.</span>
           </div>
         </div>
       </div>
@@ -149,6 +149,25 @@
     </div>
   </div>
 </div>
+</div>
+
+
+<!-- Toggle Button -->
+<button id="toggleAdminPanel" class="hidden fixed bottom-4 right-4 bg-blue-600 text-white rounded-full p-3 shadow-lg z-50 hover:bg-blue-700 transition">
+  <i class="ri-chat-1-line text-xl"></i>
+</button>
+
+<!-- Admin Message Panel -->
+<div id="adminPanel" class="hidden fixed bottom-20 right-4 bg-white border border-gray-300 rounded-2xl shadow-xl p-4 w-80 z-50">
+  <div class="flex items-center justify-between mb-2">
+    <h2 class="text-lg font-semibold text-gray-700">Admin Special Command</h2>
+    <button id="hidePanelBtn" class="text-gray-500 hover:text-red-500">
+      <i class="ri-close-line text-xl"></i>
+    </button>
+  </div>
+  <input type="email" id="targetEmail" placeholder="USERNAME MEMBER TERCINTA ADMIN" class="w-full px-3 py-2 mb-2 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
+  <textarea id="customMessage" placeholder="TULIS PESAN CINTA..." class="w-full px-3 py-2 mb-3 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+  <button id="sendMsgBtn" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Send</button>
 </div>
 
     <!-- GFX Gallery -->
@@ -693,8 +712,23 @@ function displayUser(user) {
   const verifiedEmails = [
     "gldvindonesia@gmail.com",
     "fazrelmsyamil@gmail.com",
-    "prismajawa1973@gmail.c"
+    "prismajawa1973@gmail.com"
   ];
+  
+    const userEmailEncoded = btoa(user.email);
+    const userMessageRef = ref(db, `adminMessages/${userEmailEncoded}`);
+    
+onValue(userMessageRef, (snapshot) => {
+  const data = snapshot.val();
+  if (data && data.message && data.timestamp) {
+    const lastShown = localStorage.getItem("lastAdminMsgTimestamp");
+
+    if (lastShown !== String(data.timestamp)) {
+      alert(`Message from @admin:\n\n${data.message}`);
+      localStorage.setItem("lastAdminMsgTimestamp", String(data.timestamp));
+    }
+  }
+});
 
   const isDeveloper = verifiedEmails.includes(user.email);
 
@@ -712,6 +746,24 @@ function displayUser(user) {
     if (verifiedBadge) verifiedBadge.classList.remove("hidden");
     if (verifiedBadgeMobile) verifiedBadgeMobile.classList.remove("hidden");
   }
+  
+  document.getElementById('banUserSection')?.classList.remove('hidden');
+
+  const banBtn = document.getElementById('banEmailBtn');
+  banBtn?.addEventListener('click', () => {
+    const email = document.getElementById('banEmailInput').value.trim();
+    if (email) {
+      const bannedRef = ref(db, `bannedUsers/${btoa(email)}`);
+      set(bannedRef, { banned: true })
+        .then(() => alert(`🚫 ${email} berhasil dibanned!`))
+        .catch((error) => alert(`Gagal membanned: ${error.message}`));
+    } else {
+      alert("Masukkan email yang valid.");
+    }
+  });
+  
+  const toggleAdminPanelBtn = document.getElementById("toggleAdminPanel");
+if (toggleAdminPanelBtn) toggleAdminPanelBtn.classList.remove("hidden");
 
   if (loginBtn) loginBtn.style.display = "none";
   if (loginBtnMobile) loginBtnMobile.style.display = "none";
@@ -740,6 +792,49 @@ function censorEmail(email) {
   // Event listeners
   if (loginBtn) loginBtn.addEventListener('click', signInWithGoogle);
   if (loginBtnMobile) loginBtnMobile.addEventListener('click', signInWithGoogle);
+  
+  document.getElementById("sendMsgBtn").addEventListener("click", () => {
+  const email = document.getElementById("targetEmail").value.trim();
+  const message = document.getElementById("customMessage").value.trim();
+
+  const currentUser = auth.currentUser;
+
+  if (!currentUser || currentUser.email !== "gldvindonesia@gmail.com") {
+    alert("Hanya admin yang bisa mengirim pesan!");
+    return;
+  }
+
+  if (!email || !message) {
+    alert("Isi email dan pesan terlebih dahulu.");
+    return;
+  }
+
+  const userMessageRef = ref(db, `adminMessages/${btoa(email)}`);
+  update(userMessageRef, {
+    message: message,
+    timestamp: Date.now()
+  }).then(() => {
+    alert("Pesan berhasil dikirim!");
+    document.getElementById("targetEmail").value = "";
+    document.getElementById("customMessage").value = "";
+  }).catch((error) => {
+    console.error("Gagal mengirim:", error);
+    alert("Terjadi kesalahan saat mengirim pesan.");
+  });
+});
+
+// Toggle admin panel
+const toggleBtn = document.getElementById("toggleAdminPanel");
+const adminPanel = document.getElementById("adminPanel");
+const hidePanelBtn = document.getElementById("hidePanelBtn");
+
+toggleBtn?.addEventListener("click", () => {
+  adminPanel.classList.toggle("hidden");
+});
+
+hidePanelBtn?.addEventListener("click", () => {
+  adminPanel.classList.add("hidden");
+});
 
 onAuthStateChanged(auth, (user) => {
   if (user) {

@@ -75,7 +75,7 @@
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
             <a href="https://forms.gle/k6vYXUtsydpCTguT6" class="px-6 py-3 bg-gray-200 text-center text-gray-600 text-sm font-semibold rounded-lg shadow-md hover:bg-gray-300 transition duration-300">
-            Ajukan Photo <i class="ri-upload-2-fill text-green-600"></i>
+            Upload Photo <i class="ri-upload-2-fill text-green-600"></i>
             </a>
 
             <a id="loginBtn" class="hidden px-6 py-3 bg-indigo-600 text-center text-gray-300 text-sm font-semibold rounded-lg shadow-md hover:bg-indigo-500 transition duration-300">
@@ -139,7 +139,7 @@
     <p class="text-green-600 text-[10px] flex items-center">
       Akun Terverifikasi <i class="ri-check-fill text-green-500 ml-1 text-[12px]"></i>
     </p>
-          <p class="mt-1 text-sm">Selamat Datang di GLDV (Graphics Library De Visual), tempel id di pencarian yang didapatkan di komentar video tiktok @drevviann, lalu tekan enter!, pencet foto untuk melihat detail.</p>
+          <p class="mt-1 text-sm">Selamat Datang di GLDV (Graphic Library De Visual), tempel id di pencarian yang didapatkan di komentar video tiktok @drevviann, lalu tekan enter!, pencet foto untuk melihat detail.</p>
 
     <!-- Reaction Buttons -->
     <div class="mt-3 flex space-x-3 text-[11px]">
@@ -187,7 +187,9 @@
   <div id="categoryList" class="max-h-60 overflow-y-auto space-y-1">
     <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">All</div>
     <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
-    <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Kawaii dake ja Nai Shikimori-san <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">VTuber <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume</div>
     <div onclick="selectCategory('hsr')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Honkai Starrail</div>
     <div onclick="selectCategory('sakamotodays')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Sakamoto Days</div>
     <div onclick="selectCategory('oshinoko')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Oshi No Ko</div>
@@ -197,6 +199,24 @@
   </div>
 </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+    <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card kawaiidakejanaishikimorisan" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/shikimori.png" alt="Shikimori" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/shikimori.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: SHIKI1273  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[2px] font-bold">NEW!</span>
+  </p>
+</div>
                
 <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card umamusume" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/oguricap.png" alt="Oguri Cap" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  

@@ -101,11 +101,11 @@
   
         <div class="grid grid-cols-2 gap-6 mt-10">
           <div>
-            <h3 class="text-2xl font-bold">V1.0</h3>
+            <h3 class="text-2xl font-bold">V1.1</h3>
             <p class="text-sm text-gray-400">Web Version</p>
           </div>
           <div>
-            <h3 class="text-2xl font-bold">~19/7/2025</h3>
+            <h3 class="text-2xl font-bold">~20/7/2025</h3>
             <p class="text-sm text-gray-400">Latest Update</p>
           </div>
           <div class="col-span-2 flex items-center mt-4">
@@ -214,7 +214,7 @@
   </div>
   
   <p class="text-[10px] text-gray-400">
-      ID: SHIKI1273  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[2px] font-bold">NEW!</span>
+      ID: SHIKI1273  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
   </p>
 </div>
                
@@ -729,11 +729,12 @@
   };
 
 function displayUser(user) {
-  const verifiedEmails = [
-    "gldvindonesia@gmail.com",
-    "fazrelmsyamil@gmail.com",
-    "prismajawa1973@gmail.com"
-  ];
+    const developerEmail = "gldvindonesia@gmail.com";
+    const verifiedEmails = [
+      "gldvindonesia@gmail.com",
+      "fazrelmsyamil@gmail.com",
+      "prismajawa1973@gmail.com"
+    ];
   
     const userEmailEncoded = btoa(user.email);
     const userMessageRef = ref(db, `adminMessages/${userEmailEncoded}`);
@@ -750,7 +751,8 @@ onValue(userMessageRef, (snapshot) => {
   }
 });
 
-  const isDeveloper = verifiedEmails.includes(user.email);
+const isDeveloper = user.email === developerEmail;
+const isVerified = verifiedEmails.includes(user.email);
 
   if (userDisplayName) {
     userDisplayName.textContent = `Hi, ${user.displayName}`;
@@ -762,28 +764,17 @@ onValue(userMessageRef, (snapshot) => {
     userDisplayNameMobile.classList.remove("hidden");
   }
 
-  if (isDeveloper) {
-    if (verifiedBadge) verifiedBadge.classList.remove("hidden");
-    if (verifiedBadgeMobile) verifiedBadgeMobile.classList.remove("hidden");
-  }
-  
-  document.getElementById('banUserSection')?.classList.remove('hidden');
+  if (isVerified) {
+  if (verifiedBadge) verifiedBadge.classList.remove("hidden");
+  if (verifiedBadgeMobile) verifiedBadgeMobile.classList.remove("hidden");
+}
 
-  const banBtn = document.getElementById('banEmailBtn');
-  banBtn?.addEventListener('click', () => {
-    const email = document.getElementById('banEmailInput').value.trim();
-    if (email) {
-      const bannedRef = ref(db, `bannedUsers/${btoa(email)}`);
-      set(bannedRef, { banned: true })
-        .then(() => alert(`🚫 ${email} berhasil dibanned!`))
-        .catch((error) => alert(`Gagal membanned: ${error.message}`));
-    } else {
-      alert("Masukkan email yang valid.");
-    }
-  });
-  
+if (isDeveloper) {
   const toggleAdminPanelBtn = document.getElementById("toggleAdminPanel");
-if (toggleAdminPanelBtn) toggleAdminPanelBtn.classList.remove("hidden");
+  if (toggleAdminPanelBtn) {
+    toggleAdminPanelBtn.classList.remove("hidden");
+  }
+}
 
   if (loginBtn) loginBtn.style.display = "none";
   if (loginBtnMobile) loginBtnMobile.style.display = "none";

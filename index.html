@@ -613,10 +613,6 @@
 </div>
     </div>
     </section>
-    
-    <div id="adminMessageBox"
-     class="hidden fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-white text-gray-800 px-6 py-4 rounded-xl shadow-lg border border-gray-300 z-50 transition-opacity duration-300 opacity-0 max-w-sm w-[90%] text-center">
-</div>
   </main>
   
       <!-- Modal Fullscreen Image -->
@@ -744,31 +740,15 @@ function displayUser(user) {
     const userMessageRef = ref(db, `adminMessages/${userEmailEncoded}`);
     
 onValue(userMessageRef, (snapshot) => {
-const adminBox = document.getElementById("adminMessageBox");
+  const data = snapshot.val();
+  if (data && data.message && data.timestamp) {
+    const lastShown = localStorage.getItem("lastAdminMsgTimestamp");
 
-if (data && data.message && data.timestamp) {
-  const lastShown = localStorage.getItem("lastAdminMsgTimestamp");
-
-  if (lastShown !== String(data.timestamp)) {
-    adminBox.textContent = `📢 ${data.message}`;
-    adminBox.classList.remove("hidden");
-    adminBox.classList.add("opacity-100");
-
-    // Sembunyikan setelah 5 detik
-    setTimeout(() => {
-      adminBox.classList.remove("opacity-100");
-      adminBox.classList.add("opacity-0");
-
-      // Setelah transisi selesai, sembunyikan elementnya
-      setTimeout(() => {
-        adminBox.classList.add("hidden");
-      }, 300);
-    }, 5000);
-
-    // Simpan agar tidak muncul berulang saat reload
-    localStorage.setItem("lastAdminMsgTimestamp", String(data.timestamp));
+    if (lastShown !== String(data.timestamp)) {
+      alert(`System:\n\n${data.message}`);
+      localStorage.setItem("lastAdminMsgTimestamp", String(data.timestamp));
+    }
   }
-}
 });
 
 const isDeveloper = user.email === developerEmail;

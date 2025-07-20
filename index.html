@@ -9,24 +9,45 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <link rel="shortcut icon" href="assets/img/gldv.png" type="image/x-icon" />
-<style>
-.fade-in-up {
-  animation: fadeInUp 0.5s ease forwards;
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
 </head>
 <body class="bg-white text-black font-sans">
-    
+
+<style>
+  @keyframes jump {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .jump {
+    animation: jump 1s infinite ease-in-out;
+  }
+
+  .delay-0 {
+    animation-delay: 0s;
+  }
+
+  .delay-1 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-2 {
+    animation-delay: 0.4s;
+  }
+</style>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+  <div class="flex space-x-2">
+    <div class="w-4 h-4 bg-blue-500 rounded jump delay-0"></div>
+    <div class="w-4 h-4 bg-red-500 rounded jump delay-1"></div>
+    <div class="w-4 h-4 bg-green-500 rounded jump delay-2"></div>
+  </div>
+</div>
+
     <div id="bg-word-layer" translate="no" aria-hidden="true" lang="zxx" class="notranslate absolute inset-0 z-0 overflow-hidden pointer-events-none"></div>
     
   <!-- Main Content -->
@@ -47,7 +68,9 @@
 
     <section id="home" class="scroll-mt-20 max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-center">
       <div class="animate__animated animate__fadeInLeft">
-        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-red-800">GFX <span class="underline decoration-red-800">Library</span></h1>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-red-800">
+          Graphic <span class="relative shine-loop">Library</span>
+        </h1>
         <p class="text-lg text-gray-800 mb-6">GLDV is a creative platform focused on producing high-quality graphics, original character designs, and visual content that blends artistry with modern digital aesthetics.</p>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
@@ -105,7 +128,8 @@
            onkeydown="searchLeaks(event)">
   </div>
   
-<div class="bg-white rounded-xl shadow-md p-4 flex items-start space-x-4 border border-gray-200 mb-6" data-aos="fade-up">
+  <div class="relative">
+<div class="bg-white rounded-xl shadow-md p-4 flex items-start space-x-4 border border-gray-200 mb-6 w-[328px] md:w-[450px]" data-aos="fade-up">
   <img src="assets/img/gldvindonesia.png" class="w-12 h-12 rounded-full" alt="Profile" />
   <div class="flex-1">
     <h2 class="font-semibold text-gray-800 text-sm flex items-center">
@@ -115,7 +139,7 @@
     <p class="text-green-600 text-[10px] flex items-center">
       Akun Terverifikasi <i class="ri-check-fill text-green-500 ml-1 text-[12px]"></i>
     </p>
-          <p class="mt-1 text-sm">Selamat Datang di GLDV (Graphics Library De Visual), tempel id di pencarian yang dapatkan di komentar video tiktok @drevviann, lalu tekan enter!, pencet foto untuk melihat detail.</p>
+          <p class="mt-1 text-sm">Selamat Datang di GLDV (Graphics Library De Visual), tempel id di pencarian yang didapatkan di komentar video tiktok @drevviann, lalu tekan enter!, pencet foto untuk melihat detail.</p>
 
     <!-- Reaction Buttons -->
     <div class="mt-3 flex space-x-3 text-[11px]">
@@ -125,13 +149,55 @@
     </div>
   </div>
 </div>
+</div>
 
     <!-- GFX Gallery -->
     
     <section id="gfxlibrary" class="max-w-7xl mx-auto">
+<!-- Trigger Button -->
+<button onclick="toggleCategoryPopup()" class="block w-[328px] bg-white border border-gray-300 text-gray-800 py-2 px-3 pr-10 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800 transition mb-4" data-aos="fade-up">
+  <i class="ri-menu-search-line" data-aos="fade-right"></i> Select Category
+</button>
+
+<!-- Popup -->
+<div id="categoryPopup" class="hidden absolute z-50 bg-white w-72 mt-2 rounded-xl shadow-lg border border-gray-200 p-3">
+  <!-- Search Box -->
+  <input type="text" id="searchCategory" placeholder="Search category..." class="w-full mb-2 px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800 transition" oninput="filterCategories()">
+
+  <!-- list-list kategori -->
+  <div id="categoryList" class="max-h-60 overflow-y-auto space-y-1">
+    <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">All</div>
+    <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
+    <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('hsr')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Honkai Starrail</div>
+    <div onclick="selectCategory('sakamotodays')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Sakamoto Days</div>
+    <div onclick="selectCategory('oshinoko')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Oshi No Ko</div>
+    <div onclick="selectCategory('matoseiheinoslave')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Mato Seihei No Slave</div>
+    <div onclick="selectCategory('fragrantflowerbloomswithdignity')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Fragrant Flower Blooms With Dignity</div>
+    <div onclick="selectCategory('random')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Random</div>
+  </div>
+</div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+               
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card umamusume" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/oguricap.png" alt="Oguri Cap" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/oguricap.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: OC267NBL
+  </p>
+</div>
         
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card hsr" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/castorice.png" alt="Castorice" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -149,7 +215,7 @@
   </p>
 </div>
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/shorekeeper.png" alt="Shorekeeper" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -168,7 +234,7 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">   
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card random" data-aos="fade-up" data-aos-once="false">   
   <img src="assets/img/gtr34.png" alt="GTR R34" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -187,7 +253,7 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card gt" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/beth.png" alt="Beth" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -206,7 +272,7 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card oshinoko" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/arimakana.png" alt="Arima Kana" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -225,7 +291,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card sakamotodays" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/osaragi.png" alt="Osaragi" class="w-full rounded-xl" onclick="openModal(this.src)" />  
 
   <div class="flex items-center justify-between mt-2">
@@ -244,7 +310,7 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card matoseiheinoslave" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/tenka.png" alt="Tenka" class="w-full rounded-xl" onclick="openModal(this.src)" />  
 
   <div class="flex items-center justify-between mt-2">
@@ -263,7 +329,7 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/filiancc.png" alt="Filian CC" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -281,7 +347,7 @@
   </p>
 </div>
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/filiancc2.png" alt="Filian CC 2" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -300,7 +366,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/lupa.png" alt="Lupa" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -318,7 +384,7 @@
   </p>
 </div>
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/phrolova.png" alt="Phrolova" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -336,7 +402,7 @@
   </p>
 </div>
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/shorekeeper2.png" alt="Shorekeeper 2" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -355,7 +421,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/spritegura.png" alt="Sprite X Gura" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -374,7 +440,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/cartethiya.png" alt="Cartethiya" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -393,7 +459,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card bluearchive" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/hikarihakari.png" alt="Blue Archive" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -412,7 +478,7 @@
 </div>
       
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card random" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/jnt.png" alt="Kurir J&T" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -430,7 +496,7 @@
   </p>
 </div>
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/brant.png" alt="Brant" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -448,7 +514,7 @@
   </p>
 </div>
 
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/shorekeeper3.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -466,7 +532,7 @@
   </p>
 </div>
 
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card wutheringwaves" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/shorekeeper4.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
@@ -484,8 +550,8 @@
   </p>
 </div>
 
-<div class="rounded-2xl overflow-hidden shadow-md border p-2" data-aos="fade-up" data-aos-once="false">  
-  <img src="assets/img/waguri.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card fragrantflowerbloomswithdignity" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/waguri.png" alt="Waguri" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-600">
@@ -503,14 +569,14 @@
 </div>
     </div>
     </section>
-    
-    <!-- Modal Fullscreen Image -->
+  </main>
+  
+      <!-- Modal Fullscreen Image -->
 <div id="imageModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center" onclick="closeModal()">
   <div class="relative max-w-5xl w-full mx-auto px-4">
-    <img id="modalImage" src="" class="w-full max-h-[90vh] object-contain mx-auto rounded-lg shadow-lg pointer-events-none" />
+    <img id="modalImage" src="" class="w-full max-h-[90vh] object-contain mx-auto rounded-lg shadow-lg pointer-events-none fade-in-up" />
   </div>
 </div>
-  </main>
   
   <script>
   const modal = document.getElementById('imageModal');
@@ -532,7 +598,7 @@
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({
-    once: false, // Repeat every time it scrolls into view
+    once: true, // Repeat every time it scrolls into view
     duration: 800,
     easing: 'ease-in-out',
   });
@@ -699,6 +765,106 @@ onAuthStateChanged(auth, (user) => {
     bgLayer.appendChild(span);
   }
       </script>
+      
+<style>
+  /* Tambahkan fade out dan fade in animasi */
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+</style>
+
+<script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const overlay = document.getElementById("loadingOverlay");
+
+      // Tambahkan animasi fade out
+      overlay.classList.add("fade-out");
+
+      // Tunggu sampai animasi selesai
+      setTimeout(() => {
+        overlay.remove(); // ganti display: none → hapus element-nya agar tidak mengganggu modal
+    
+        // Aktifkan scroll kembali
+        document.body.style.overflow = "auto"; // gunakan style langsung agar aman
+      }, 500); // waktu animasi fade-out
+    }, 1500); // durasi loading
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    function toggleCategoryPopup() {
+      const popup = document.getElementById("categoryPopup");
+      popup.classList.toggle("hidden");
+    }
+
+    function selectCategory(category) {
+      console.log("Kategori dipilih:", category);
+    
+      const cards = document.querySelectorAll('.category-card');
+    
+      cards.forEach(card => {
+        const aosAttr = card.getAttribute("data-aos");
+    
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+    
+          if (category === 'all') {
+            // Aktifkan kembali animasi AOS
+            if (!card.hasAttribute("data-aos")) {
+              card.setAttribute("data-aos", "fade-up");
+            }
+          } else {
+            // Matikan animasi AOS
+            if (card.hasAttribute("data-aos")) {
+              card.removeAttribute("data-aos");
+            }
+            card.classList.remove("aos-animate"); // pastikan tidak animasi
+          }
+    
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    
+      document.getElementById("categoryPopup").classList.add("hidden");
+    
+      // Refresh animasi AOS hanya untuk kategori all
+      if (category === 'all') {
+        setTimeout(() => {
+          AOS.refreshHard();
+        }, 100);
+      }
+    }
+
+    function filterCategories() {
+      const input = document.getElementById("searchCategory").value.toLowerCase();
+      const items = document.querySelectorAll("#categoryList .category-item");
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    // Optional: Close popup when clicking outside
+    document.addEventListener("click", function (e) {
+      const popup = document.getElementById("categoryPopup");
+      const button = e.target.closest("button");
+
+      if (popup && !popup.contains(e.target) && !button) {
+        popup.classList.add("hidden");
+      }
+    });
+
+    // Jadikan fungsi global agar bisa dipakai di HTML inline onclick
+    window.toggleCategoryPopup = toggleCategoryPopup;
+    window.selectCategory = selectCategory;
+    window.filterCategories = filterCategories;
+  });
+</script>
 
 </body>
 </html>

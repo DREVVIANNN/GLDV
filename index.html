@@ -97,7 +97,9 @@
         
         </div>
 
-
+        <div id="onlineIndicator" class="fixed bottom-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm shadow-md z-50">
+             <i class="ri-group-fill"></i> Online: <span id="onlineCount">0</span>
+        </div>
   
         <div class="grid grid-cols-2 gap-6 mt-10">
           <div>
@@ -613,6 +615,25 @@
 </div>
     </div>
     </section>
+    
+<!-- message custom sesuka gw -->
+<div id="customAlert" class="fixed inset-0 flex items-center justify-center px-4 z-50 hidden">
+  <div class="bg-white shadow-2xl rounded-2xl max-w-sm w-[300px] md:w[600px] p-6 border border-gray-200 animate-fade-in-up">
+    <div class="flex justify-between items-start">
+      <div>
+
+  <div class="flex">
+    <h2 class="font-bold text-red-800 text-sm flex items-center">
+      Warning From System:
+    </h2>
+    </div>
+        <p id="customAlertMessage" class="text-sm text-gray-700 mt-1 leading-relaxed">
+          Something went wrong.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
   </main>
   
       <!-- Modal Fullscreen Image -->
@@ -692,6 +713,34 @@
   const db = getDatabase(app);
   const reactionRef = ref(db, 'reactions/gldv');
 
+
+
+  const onlineUsersRef = ref(db, 'onlineUsers');
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const userRef = ref(db, `onlineUsers/${user.uid}`);
+    
+    // Tambahkan user ke daftar online
+    set(userRef, {
+      displayName: user.displayName || 'Anonymous',
+      timestamp: Date.now()
+    });
+
+    // Hapus dari daftar online saat keluar/close halaman
+    window.addEventListener('beforeunload', () => {
+      remove(userRef);
+    });
+  }
+});
+
+// Update jumlah online di UI
+onValue(onlineUsersRef, (snapshot) => {
+  const data = snapshot.val();
+  const onlineCount = data ? Object.keys(data).length : 0;
+  document.getElementById("onlineCount").textContent = onlineCount;
+});
+
   // Load current reaction counts
   onValue(reactionRef, (snapshot) => {
     const data = snapshot.val() || {};
@@ -745,7 +794,7 @@ onValue(userMessageRef, (snapshot) => {
     const lastShown = localStorage.getItem("lastAdminMsgTimestamp");
 
     if (lastShown !== String(data.timestamp)) {
-      alert(`System:\n\n${data.message}`);
+      showCustomAlert(`${data.message}`);
       localStorage.setItem("lastAdminMsgTimestamp", String(data.timestamp));
     }
   }
@@ -834,6 +883,25 @@ function censorEmail(email) {
   });
 });
 
+
+function showCustomAlert(message) {
+  const alertBox = document.getElementById("customAlert");
+  const alertMsg = document.getElementById("customAlertMessage");
+
+  alertMsg.innerText = message;
+  alertBox.classList.remove("hidden");
+
+  // Auto close after 5 seconds
+  setTimeout(() => {
+    closeCustomAlert();
+  }, 5000);
+}
+
+function closeCustomAlert() {
+  const alertBox = document.getElementById("customAlert");
+  alertBox.classList.add("hidden");
+}
+
 // Toggle admin panel
 const toggleBtn = document.getElementById("toggleAdminPanel");
 const adminPanel = document.getElementById("adminPanel");
@@ -901,6 +969,11 @@ onAuthStateChanged(auth, (user) => {
     transform: translateY(0);
   }
 }
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+</style>
 </style>
 
 <script>

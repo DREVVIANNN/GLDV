@@ -97,22 +97,14 @@
         
         </div>
 
-        <div id="onlineIndicator" class="fixed bottom-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-lg text-sm shadow-md z-50">
-             <i class="ri-group-fill"></i> Online: <span id="onlineCount">0</span>
-        </div>
-  
         <div class="grid grid-cols-2 gap-6 mt-10">
           <div>
-            <h3 class="text-2xl font-bold">V1.1</h3>
+            <h3 class="text-2xl font-bold">V1.12</h3>
             <p class="text-sm text-gray-400">Web Version</p>
           </div>
           <div>
-            <h3 class="text-2xl font-bold">~20/7/2025</h3>
+            <h3 class="text-2xl font-bold">~23/7/2025</h3>
             <p class="text-sm text-gray-400">Latest Update</p>
-          </div>
-          <div class="col-span-2 flex items-center mt-4">
-            <div class="text-red-500 text-lg"></div>
-            <span class="text-sm text-gray-500">© 2025 GLDV. All rights reserved.</span>
           </div>
         </div>
       </div>
@@ -167,8 +159,8 @@
       <i class="ri-close-line text-xl"></i>
     </button>
   </div>
-  <input type="email" id="targetEmail" placeholder="USERNAME MEMBER TERCINTA ADMIN" class="w-full px-3 py-2 mb-2 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
-  <textarea id="customMessage" placeholder="TULIS PESAN CINTA..." class="w-full px-3 py-2 mb-3 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+  <input type="email" id="targetEmail" placeholder="User email" class="w-full px-3 py-2 mb-2 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400" />
+  <textarea id="customMessage" placeholder="Message for target..." class="w-full px-3 py-2 mb-3 text-sm border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
   <button id="sendMsgBtn" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Send</button>
 </div>
 
@@ -189,8 +181,8 @@
   <div id="categoryList" class="max-h-60 overflow-y-auto space-y-1">
     <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">All</div>
     <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
-    <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Kawaii dake ja Nai Shikimori-san <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
-    <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">VTuber <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Kawaii dake ja Nai Shikimori-san <!--<span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span>--></div>
+    <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">VTuber</div>
     <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume</div>
     <div onclick="selectCategory('hsr')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Honkai Starrail</div>
     <div onclick="selectCategory('sakamotodays')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Sakamoto Days</div>
@@ -200,7 +192,26 @@
     <div onclick="selectCategory('random')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Random</div>
   </div>
 </div>
+
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+    <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card umamusume" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/daiwascarlet.png" alt="Daiwa Scarlet" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/daiwascarlet.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: DS57729  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+  </p>
+</div>
         
     <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card kawaiidakejanaishikimorisan" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/shikimori.png" alt="Shikimori" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
@@ -216,7 +227,7 @@
   </div>
   
   <p class="text-[10px] text-gray-400">
-      ID: SHIKI1273  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+      ID: SHIKI1273
   </p>
 </div>
                
@@ -713,33 +724,6 @@
   const db = getDatabase(app);
   const reactionRef = ref(db, 'reactions/gldv');
 
-
-
-  const onlineUsersRef = ref(db, 'onlineUsers');
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    const userRef = ref(db, `onlineUsers/${user.uid}`);
-    
-    // Tambahkan user ke daftar online
-    set(userRef, {
-      displayName: user.displayName || 'Anonymous',
-      timestamp: Date.now()
-    });
-
-    // Hapus dari daftar online saat keluar/close halaman
-    window.addEventListener('beforeunload', () => {
-      remove(userRef);
-    });
-  }
-});
-
-// Update jumlah online di UI
-onValue(onlineUsersRef, (snapshot) => {
-  const data = snapshot.val();
-  const onlineCount = data ? Object.keys(data).length : 0;
-  document.getElementById("onlineCount").textContent = onlineCount;
-});
 
   // Load current reaction counts
   onValue(reactionRef, (snapshot) => {

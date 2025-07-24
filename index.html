@@ -90,6 +90,9 @@
             <span id="userName" class="text-sm font-semibold text-gray-800"></span>
             <span id="verifiedBadgeMobile" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-red-800"></i>
                   </span>
+            <span id="verifiedBadgeInfluencer" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-blue-500"></i>
+                  </span>
+                  
             </div>
             <p id="userEmail" class="text-xs text-gray-600"></p>
           </div>
@@ -181,6 +184,7 @@
   <div id="categoryList" class="max-h-60 overflow-y-auto space-y-1">
     <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">All</div>
     <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
+    <div onclick="selectCategory('bocchitherock')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Bocchi The Rock <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
     <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Kawaii dake ja Nai Shikimori-san <!--<span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span>--></div>
     <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">VTuber</div>
     <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume</div>
@@ -194,6 +198,24 @@
 </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        
+    <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card bocchitherock" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/bocchitherock.png" alt="Hitori Gotou" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-600">
+      Safriyadi <i class="ri-checkbox-circle-fill text-red-800"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/bocchitherock.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: BCH000  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+  </p>
+</div>
         
     <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/mythiabatford.png" alt="Mythia Batford" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
@@ -209,7 +231,7 @@
   </div>
   
   <p class="text-[10px] text-gray-400">
-      ID: MYB2618  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+      ID: MYB2618
   </p>
 </div>
 
@@ -228,7 +250,7 @@
   </div>
   
   <p class="text-[10px] text-gray-400">
-      ID: DS57729  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+      ID: DS57729
   </p>
 </div>
         
@@ -785,7 +807,8 @@ function displayUser(user) {
     const verifiedEmails = [
       "gldvindonesia@gmail.com",
       "fazrelmsyamil@gmail.com",
-      "prismajawa1973@gmail.com"
+      "prismajawa1973@gmail.com",
+      "muhammad.safriyadi16@smp.belajar.id"
     ];
   
     const userEmailEncoded = btoa(user.email);

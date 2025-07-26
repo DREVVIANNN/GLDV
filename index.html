@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <link rel="shortcut icon" href="assets/img/gldv.png" type="image/x-icon" />
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
 </head>
-<body class="bg-white text-black font-sans">
+<body class="bg-gray-800 text-gray-300 font-sans">
 
 <style>
   @keyframes jump {
@@ -39,8 +40,30 @@
   }
 </style>
 
+<div id="plainWelcomeText" class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+  <p class="text-white text-center text-lg sm:text-2xl font-semibold"
+     style="font-family: 'Minecraft', 'sans-serif';">
+    SELAMAT DATANG!
+  </p>
+</div>
+
+<!-- selamat datang script -->
+<script>
+  window.addEventListener('load', () => {
+    const welcomeText = document.getElementById('plainWelcomeText');
+    if (welcomeText) {
+      setTimeout(() => {
+        welcomeText.classList.add('opacity-0', 'transition-opacity', 'duration-700');
+        setTimeout(() => {
+          welcomeText.remove();
+        }, 700); // wait for fade out transition to finish
+      }, 3500); // show for 3.5 seconds
+    }
+  });
+</script>
+
 <!-- Loading Overlay -->
-<div id="loadingOverlay" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+<div id="loadingOverlay" class="fixed inset-0 bg-gray-800 flex items-center justify-center z-50">
   <div class="flex space-x-2">
     <div class="w-4 h-4 bg-blue-500 rounded jump delay-0"></div>
     <div class="w-4 h-4 bg-red-500 rounded jump delay-1"></div>
@@ -53,14 +76,14 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 mb-10">
 
-    <header class="sticky top-0 z-50 bg-white flex items-center justify-between p-3 max-w-7xl mx-auto">
+    <header class="sticky top-0 z-50 bg-gray-800 flex items-center justify-between p-3 max-w-7xl mx-auto">
       <div class="text-xl font-bold">GLDV</div>
       
     
       <div class="flex gap-4 items-center relative">
 
-               <a href="mailto:cs@gldv.my.id" class="text-sm px-3 py-[6px] border rounded-md focus:outline-none">
-                <i class="ri-customer-service-2-fill text-gray-800"></i>
+               <a href="mailto:gldvindonesia@gmail.com" class="text-sm px-3 py-[6px] border rounded-md focus:outline-none">
+                <i class="ri-customer-service-2-fill text-gray-300"></i>
                </a>
 
       </div>
@@ -69,9 +92,9 @@
     <section id="home" class="scroll-mt-20 max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-12 items-center">
       <div class="animate__animated animate__fadeInLeft">
         <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 text-red-800">
-          Graphic <span class="relative shine-loop">Library</span>
+          Graphics <span class="relative shine-loop">Library</span>
         </h1>
-        <p class="text-lg text-gray-800 mb-6">GLDV is a creative platform focused on producing high-quality graphics, original character designs, and visual content that blends artistry with modern digital aesthetics.</p>
+        <p class="text-lg text-gray-300 mb-6">GLDV is a creative platform focused on producing high-quality graphics, original character designs, and visual content that blends artistry with modern digital aesthetics.</p>
 
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
             <a href="https://forms.gle/k6vYXUtsydpCTguT6" class="px-6 py-3 bg-gray-200 text-center text-gray-600 text-sm font-semibold rounded-lg shadow-md hover:bg-gray-300 transition duration-300">
@@ -87,14 +110,14 @@
           <img id="userPhoto" class="w-12 h-12 rounded-full border" src="" alt="User Photo" />
           <div>
             <div class="flex items-center gap-2">
-            <span id="userName" class="text-sm font-semibold text-gray-800"></span>
+            <span id="userName" class="text-sm font-semibold text-gray-300"></span>
             <span id="verifiedBadgeMobile" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-red-800"></i>
                   </span>
             <span id="verifiedBadgeInfluencer" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-blue-500"></i>
                   </span>
                   
             </div>
-            <p id="userEmail" class="text-xs text-gray-600"></p>
+            <p id="userEmail" class="text-xs text-gray-500"></p>
           </div>
         </div>
         
@@ -102,7 +125,7 @@
 
         <div class="grid grid-cols-2 gap-6 mt-10">
           <div>
-            <h3 class="text-2xl font-bold">V1.12</h3>
+            <h3 class="text-2xl font-bold">V1.2</h3>
             <p class="text-sm text-gray-400">Web Version</p>
           </div>
           <div>
@@ -121,15 +144,15 @@
     <h2 class="text-3xl font-bold">Latest Upload</h2>
   <div class="max-w-7xl mb-5 mt-5 mx-auto">
     <input type="text" id="searchInput" placeholder="Search ID..."
-           class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-md shadow focus:outline-none focus:ring focus:border-blue-500"
+           class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-md shadow focus:outline-none focus:ring focus:border-blue-500 text-gray-500"
            onkeydown="searchLeaks(event)">
   </div>
   
   <div class="relative">
-<div class="bg-white rounded-xl shadow-md p-4 flex items-start space-x-4 border border-gray-200 mb-6 w-full md:w-[450px]" data-aos="fade-up">
+<div class="bg-gray-800 rounded-xl shadow-md p-4 flex items-start space-x-4 border border-gray-200 mb-6 w-full md:w-[450px]" data-aos="fade-up">
   <img src="assets/img/gldvindonesia.png" class="w-12 h-12 rounded-full" alt="Profile" />
   <div class="flex-1">
-    <h2 class="font-semibold text-gray-800 text-sm flex items-center">
+    <h2 class="font-semibold text-gray-300 text-sm flex items-center">
       GLDV Indonesia
       <i class="ri-checkbox-circle-fill text-red-800 text-[14px] ml-1"></i>
     </h2>
@@ -140,9 +163,9 @@
 
     <!-- Reaction Buttons -->
     <div class="mt-3 flex space-x-3 text-[11px]">
-      <button onclick="react('love')" class="text-gray-500 border px-1 py-1 hover:text-red-500 rounded">❤️ <span id="loveCount">0</span></button>
-      <button onclick="react('like')" class="text-gray-500 px-1 py-1 rounded border hover:text-blue-500">👍 <span id="likeCount">0</span></button>
-      <button onclick="react('wow')" class="text-gray-500 hover:text-yellow-500 rounded px-1 py-1 border">🤩 <span id="wowCount">0</span></button>
+      <button onclick="react('love')" class="text-gray-300 border px-1 py-1 hover:text-red-500 rounded">❤️ <span id="loveCount">0</span></button>
+      <button onclick="react('like')" class="text-gray-300 px-1 py-1 rounded border hover:text-blue-500">👍 <span id="likeCount">0</span></button>
+      <button onclick="react('wow')" class="text-gray-300 hover:text-yellow-500 rounded px-1 py-1 border">🤩 <span id="wowCount">0</span></button>
     </div>
   </div>
 </div>
@@ -171,29 +194,31 @@
     
     <section id="gfxlibrary" class="max-w-7xl mx-auto">
 <!-- Trigger Button -->
-<button onclick="toggleCategoryPopup()" class="block w-[210px] bg-white border border-gray-300 text-gray-800 py-2 px-3 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800 transition mb-4" data-aos="fade-up">
+<button onclick="toggleCategoryPopup()" class="block w-[210px] bg-gray-800 border border-gray-300 text-gray-300 py-2 px-3 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-red-800 transition mb-4" data-aos="fade-up">
   <i class="ri-menu-search-line" data-aos="fade-right"></i> Select Category
 </button>
 
 <!-- Popup -->
-<div id="categoryPopup" class="hidden absolute z-50 bg-white w-72 mt-2 rounded-xl shadow-lg border border-gray-200 p-3">
+<div id="categoryPopup" class="hidden absolute z-50 bg-gray-800 w-72 mt-2 rounded-xl shadow-lg border border-gray-200 p-3">
   <!-- Search Box -->
   <input type="text" id="searchCategory" placeholder="Search category..." class="w-full mb-2 px-3 py-2 text-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-red-800 focus:border-red-800 transition" oninput="filterCategories()">
 
   <!-- list-list kategori -->
   <div id="categoryList" class="max-h-60 overflow-y-auto space-y-1">
-    <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">All</div>
-    <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
-    <div onclick="selectCategory('bocchitherock')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Bocchi The Rock <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
-    <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Kawaii dake ja Nai Shikimori-san <!--<span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span>--></div>
-    <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">VTuber</div>
-    <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Umamusume</div>
-    <div onclick="selectCategory('hsr')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Honkai Starrail</div>
-    <div onclick="selectCategory('sakamotodays')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Sakamoto Days</div>
-    <div onclick="selectCategory('oshinoko')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Oshi No Ko</div>
-    <div onclick="selectCategory('matoseiheinoslave')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Mato Seihei No Slave</div>
-    <div onclick="selectCategory('fragrantflowerbloomswithdignity')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Fragrant Flower Blooms With Dignity</div>
-    <div onclick="selectCategory('random')" class="category-item px-3 py-2 rounded hover:bg-gray-100 cursor-pointer">Random</div>
+    <div onclick="selectCategory('all')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">All</div>
+    <div onclick="selectCategory('wutheringwaves')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Wuthering Waves <span class="bg-gradient-to-l select-none from-orange-600 to-yellow-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">HOT!</span></div>
+    <div onclick="selectCategory('bocchitherock')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Bocchi The Rock <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span></div>
+    <div onclick="selectCategory('kawaiidakejanaishikimorisan')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Kawaii dake ja Nai Shikimori-san <!--<span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[10px] font-bold">NEW!</span>--></div>
+    <div onclick="selectCategory('bluearchive')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Blue Archive</div>
+    <div onclick="selectCategory('guardiantales')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Guardian Tales</div>
+    <div onclick="selectCategory('vtuber')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">VTuber</div>
+    <div onclick="selectCategory('umamusume')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Umamusume</div>
+    <div onclick="selectCategory('hsr')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Honkai Starrail</div>
+    <div onclick="selectCategory('sakamotodays')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Sakamoto Days</div>
+    <div onclick="selectCategory('oshinoko')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Oshi No Ko</div>
+    <div onclick="selectCategory('matoseiheinoslave')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Mato Seihei No Slave</div>
+    <div onclick="selectCategory('fragrantflowerbloomswithdignity')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Fragrant Flower Blooms With Dignity</div>
+    <div onclick="selectCategory('random')" class="category-item px-3 py-2 rounded hover:bg-gray-700 cursor-pointer">Random</div>
   </div>
 </div>
 
@@ -203,11 +228,11 @@
   <img src="assets/img/bocchitherock.png" alt="Hitori Gotou" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       Safriyadi <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/bocchitherock.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/bocchitherock.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -221,11 +246,11 @@
   <img src="assets/img/mythiabatford.png" alt="Mythia Batford" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/mythiabatford.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/mythiabatford.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -240,11 +265,11 @@
   <img src="assets/img/daiwascarlet.png" alt="Daiwa Scarlet" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/daiwascarlet.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/daiwascarlet.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -258,11 +283,11 @@
   <img src="assets/img/shikimori.png" alt="Shikimori" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/shikimori.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/shikimori.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -276,11 +301,11 @@
   <img src="assets/img/oguricap.png" alt="Oguri Cap" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/oguricap.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/oguricap.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -294,11 +319,11 @@
   <img src="assets/img/castorice.png" alt="Castorice" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/castorice.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/castorice.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -312,11 +337,11 @@
   <img src="assets/img/shorekeeper.png" alt="Shorekeeper" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/shorekeeper.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/shorekeeper.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -331,11 +356,11 @@
   <img src="assets/img/gtr34.png" alt="GTR R34" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/gtr34.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/gtr34.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -346,15 +371,15 @@
 </div>
 
       
-<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card gt" data-aos="fade-up" data-aos-once="false">  
+<div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card guardiantales" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/beth.png" alt="Beth" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/beth.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/beth.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -369,11 +394,11 @@
   <img src="assets/img/arimakana.png" alt="Arima Kana" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/arimakana.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/arimakana.png" class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -388,11 +413,11 @@
   <img src="assets/img/osaragi.png" alt="Osaragi" class="w-full rounded-xl" onclick="openModal(this.src)" />  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/osaragi.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/osaragi.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -407,11 +432,11 @@
   <img src="assets/img/tenka.png" alt="Tenka" class="w-full rounded-xl" onclick="openModal(this.src)" />  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/tenka.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/tenka.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -423,14 +448,14 @@
 
       
 <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
-  <img src="assets/img/filiancc.png" alt="Filian CC" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
+  <img src="assets/img/filiancc.png" alt="Filian" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/filiancc.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/filiancc.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -442,7 +467,7 @@
       
 <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <div class="relative group">
-    <img src="assets/img/filiancc2.png" alt="Filian CC 2" class="w-full rounded-xl" />
+    <img src="assets/img/.png" alt="Filian" class="w-full rounded-xl" />
 
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black flex flex-col items-center justify-center rounded-xl transition-opacity duration-300 z-10">
@@ -452,7 +477,7 @@
   </div>
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <a class="text-gray-600 hover:text-gray-800 text-sm">
@@ -468,11 +493,11 @@
   <img src="assets/img/lupa.png" alt="Lupa" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/lupa.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/lupa.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -486,11 +511,11 @@
   <img src="assets/img/phrolova.png" alt="Phrolova" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/phrolova.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/phrolova.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -504,11 +529,11 @@
   <img src="assets/img/shorekeeper2.png" alt="Shorekeeper 2" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/shorekeeper2.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/shorekeeper2.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -523,11 +548,11 @@
   <img src="assets/img/spritegura.png" alt="Sprite X Gura" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/spritegura.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/spritegura.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -542,11 +567,11 @@
   <img src="assets/img/cartethiya.png" alt="Cartethiya" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/cartethiya.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/cartethiya.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -561,11 +586,11 @@
   <img src="assets/img/hikarihakari.png" alt="Blue Archive" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/hikarihakari.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/hikarihakari.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -580,11 +605,11 @@
   <img src="assets/img/jnt.png" alt="Kurir J&T" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/jnt.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/jnt.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -598,11 +623,11 @@
   <img src="assets/img/brant.png" alt="Brant" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/brant.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/brant.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -616,11 +641,11 @@
   <img src="assets/img/shorekeeper3.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/shorekeeper3.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/shorekeeper3.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -634,11 +659,11 @@
   <img src="assets/img/shorekeeper4.png" alt="Shorekeeper" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/shorekeeper4.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/shorekeeper4.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -652,11 +677,11 @@
   <img src="assets/img/waguri.png" alt="Waguri" class="w-full rounded-xl" onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
-    <p class="text-xs text-gray-600">
+    <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
     <!-- Download Button -->
-    <a href="assets/img/waguri.png" download class="text-gray-600 hover:text-gray-800 text-sm">
+    <a href="assets/img/waguri.png" download class="text-green-500 hover:text-green-400 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -686,7 +711,31 @@
     </div>
   </div>
 </div>
+
   </main>
+  
+  <footer class="bg-[#0f172a] text-white py-10 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Brand/Logo -->
+    <div>
+        <img class="w-[50px]" src="assets/img/gldv.png" alt="GLDV Logo">
+      <p class="text-sm text-gray-400 mt-2">Powered by Graphics Library De Visual.</p>
+      <p class="text-xs text-gray-600 mt-1">&copy; 2025 GLDV. All rights reserved.</p>
+      <p class="text-xs text-gray-600 mt-1">&copy; 2025 InPanels Development. All rights reserved.</p>
+
+    <!-- Quick Links -->
+    <div>
+      <h3 class="text-lg text-white-300 font-semibold mb-3">More</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="https://saweria.co/drevviann" class="text-blue-400 underline transition">Support Us With Saweria</a></li>
+      </ul>
+    </div>
+  
+
+
+  </div>
+</footer>
+
   
       <!-- Modal Fullscreen Image -->
 <div id="imageModal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center" onclick="closeModal()">
@@ -962,7 +1011,7 @@ onAuthStateChanged(auth, (user) => {
   for (let i = 0; i < wordCount; i++) {
     const span = document.createElement("span");
     span.innerText = words[Math.floor(Math.random() * words.length)];
-    span.className = "absolute text-black/10 font-extrabold whitespace-nowrap select-none";
+    span.className = "absolute text-blue-50/10 font-extrabold whitespace-nowrap select-none";
     span.style.fontSize = `${Math.floor(Math.random() * 30) + 16}px`;
     span.style.top = `${Math.random() * 100}vh`;
     span.style.left = `${Math.random() * 100}vw`;

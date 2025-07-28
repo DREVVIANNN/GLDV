@@ -40,28 +40,6 @@
   }
 </style>
 
-<div id="plainWelcomeText" class="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
-  <p class="text-white text-center text-lg sm:text-2xl font-semibold"
-     style="font-family: 'Minecraft', 'sans-serif';">
-    SELAMAT DATANG!
-  </p>
-</div>
-
-<!-- selamat datang script -->
-<script>
-  window.addEventListener('load', () => {
-    const welcomeText = document.getElementById('plainWelcomeText');
-    if (welcomeText) {
-      setTimeout(() => {
-        welcomeText.classList.add('opacity-0', 'transition-opacity', 'duration-700');
-        setTimeout(() => {
-          welcomeText.remove();
-        }, 700); // wait for fade out transition to finish
-      }, 3500); // show for 3.5 seconds
-    }
-  });
-</script>
-
 <!-- Loading Overlay -->
 <div id="loadingOverlay" class="fixed inset-0 bg-gray-800 flex items-center justify-center z-50">
   <div class="flex space-x-2">
@@ -111,7 +89,7 @@
           <div>
             <div class="flex items-center gap-2">
             <span id="userName" class="text-sm font-semibold text-gray-300"></span>
-            <span id="verifiedBadgeMobile" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-red-800"></i>
+            <span id="verifiedBadgeMobile" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-red-700"></i>
                   </span>
             <span id="verifiedBadgeInfluencer" class="hidden text-[12px]"><i class="ri-checkbox-circle-fill text-blue-500"></i>
                   </span>
@@ -153,8 +131,8 @@
   <img src="assets/img/gldvindonesia.png" class="w-12 h-12 rounded-full" alt="Profile" />
   <div class="flex-1">
     <h2 class="font-semibold text-gray-300 text-sm flex items-center">
-      GLDV Indonesia
-      <i class="ri-checkbox-circle-fill text-red-800 text-[14px] ml-1"></i>
+      designer carbeat
+      <i class="ri-checkbox-circle-fill text-red-700 text-[14px] ml-1"></i>
     </h2>
     <p class="text-green-600 text-[10px] flex items-center">
       Akun Terverifikasi <i class="ri-check-fill text-green-500 ml-1 text-[12px]"></i>
@@ -224,12 +202,30 @@
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         
+    <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card umamusume" data-aos="fade-up" data-aos-once="false">  
+  <img src="assets/img/tokaiteio.png" alt="Tokai Teio" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
+
+  <div class="flex items-center justify-between mt-2">
+    <p class="text-xs text-gray-300">
+      DREVVIANN <i class="ri-checkbox-circle-fill text-red-700"></i>
+    </p>
+    <!-- Download Button -->
+    <a href="assets/img/tokaiteio.png" download class="text-green-500 hover:text-green-400 text-sm">
+      <i class="ri-download-2-line"></i>
+    </a>
+  </div>
+  
+  <p class="text-[10px] text-gray-400">
+      ID: TEIO281  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+  </p>
+</div>
+        
     <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card bocchitherock" data-aos="fade-up" data-aos-once="false">  
   <img src="assets/img/ryoyamadathb.png" alt="Ryo Yamada" class="w-full rounded-xl"  onclick="openModal(this.src)"/>  
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/ryoyamada.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -238,7 +234,7 @@
   </div>
   
   <p class="text-[10px] text-gray-400">
-      ID: RYMD163  <span class="bg-gradient-to-l select-none from-green-600 to-blue-500 text-white px-1.5 py-[1px] rounded text-[8px] font-bold">NEW!</span>
+      ID: RYMD163
   </p>
 </div>
         
@@ -247,7 +243,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      Safriyadi <i class="ri-checkbox-circle-fill text-red-800"></i>
+      Safriyadi <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/bocchitherock.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -265,7 +261,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/mythiabatford.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -284,7 +280,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/daiwascarlet.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -302,7 +298,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/shikimori.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -320,7 +316,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/oguricap.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -338,7 +334,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/castorice.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -356,7 +352,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/shorekeeper.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -375,7 +371,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/gtr34.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -394,7 +390,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/beth.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -413,7 +409,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/arimakana.png" class="text-green-500 hover:text-green-400 text-sm">
@@ -432,7 +428,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/osaragi.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -451,7 +447,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/tenka.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -485,7 +481,7 @@
       
 <div class="rounded-2xl overflow-hidden shadow-md border p-2 category-card vtuber" data-aos="fade-up" data-aos-once="false">  
   <div class="relative group">
-    <img src="assets/img/.png" alt="Filian" class="w-full rounded-xl" />
+    <img src="assets/img/filiancc.png" alt="Filian" class="w-full rounded-xl" />
 
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black flex flex-col items-center justify-center rounded-xl transition-opacity duration-300 z-10">
@@ -498,7 +494,7 @@
     <p class="text-xs text-gray-300">
       GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
     </p>
-    <a class="text-gray-600 hover:text-gray-800 text-sm">
+    <a class="text-gray-500 text-sm">
       <i class="ri-download-2-line"></i>
     </a>
   </div>
@@ -512,7 +508,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/lupa.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -530,7 +526,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/phrolova.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -548,7 +544,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/shorekeeper2.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -567,7 +563,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/spritegura.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -586,7 +582,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/cartethiya.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -605,7 +601,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/hikarihakari.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -624,7 +620,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/jnt.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -642,7 +638,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/brant.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -660,7 +656,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/shorekeeper3.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -678,7 +674,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/shorekeeper4.png" download class="text-green-500 hover:text-green-400 text-sm">
@@ -696,7 +692,7 @@
 
   <div class="flex items-center justify-between mt-2">
     <p class="text-xs text-gray-300">
-      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-800"></i>
+      GLDV Indonesia <i class="ri-checkbox-circle-fill text-red-700"></i>
     </p>
     <!-- Download Button -->
     <a href="assets/img/waguri.png" download class="text-green-500 hover:text-green-400 text-sm">
